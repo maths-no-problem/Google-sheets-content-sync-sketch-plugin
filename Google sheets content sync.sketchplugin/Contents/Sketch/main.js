@@ -409,24 +409,43 @@ function fetchValuesForPage(sheetID, pageNumber) {
 // Parse the data to how we want it
 function parseData(data) {
   var values = {}
-
-  data.feed.entry.forEach(function(entry) {
-    Object.keys(entry).filter(function(key) {
-      return key.indexOf('gsx$') == 0
-    }).forEach(function(key) {
-      var newKey = key.substring(4)
-      if (!(values.hasOwnProperty(newKey))) {
-        values[newKey] = []
+  var parseByRow = true;
+  
+  if(parseByRow) {
+    data.feed.entry.forEach(function(entry) {
+      var KEYNAME = 'gsx$key'
+      var LABELNAME = 'gsx$value'
+      var key = entry[KEYNAME]['$t'];
+      var value = entry[LABELNAME]['$t'];
+      if (!(values.hasOwnProperty(key))) {
+        values[key] = []
       }
-
-      var newValue = entry[key]['$t']
-      if (newValue) {
-        var currentArray = values[newKey]
-        currentArray.push(newValue)
-        values[newKey] = currentArray
+      if (value) {
+        var currentArray = values[key]
+        currentArray.push(value)
+        values[key] = currentArray
       }
     })
-  })
+
+  } else {
+    data.feed.entry.forEach(function(entry) {
+      Object.keys(entry).filter(function(key) {
+        return key.indexOf('gsx$') == 0
+      }).forEach(function(key) {
+        var newKey = key.substring(4)
+        if (!(values.hasOwnProperty(newKey))) {
+          values[newKey] = []
+        }
+  
+        var newValue = entry[key]['$t']
+        if (newValue) {
+          var currentArray = values[newKey]
+          currentArray.push(newValue)
+          values[newKey] = currentArray
+        }
+      })
+    })
+  }
   return {
     title: data.feed.title.$t,
     values: values
