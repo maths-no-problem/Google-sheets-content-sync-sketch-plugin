@@ -16,11 +16,15 @@ Edit and collaborate on your content in Google Sheets, then sync in back to your
 
 2. Publish it with `File > Publish to the web... > Publish`
 3. Name text layers appropriately — e.g. `text layer #title`
+4. Download plugin - https://github.com/maths-no-problem/Google-sheets-content-sync-sketch-plugin/archive/master.zip
+5. Unzip and install Plugin by clicking on ***Google sheets content sync.sketchplugin***
+5. setup Google Sheet linking - `control + shift + i` > copy the url for published google sheet into modal.
 4. Run the plugin — `control + i`
 
 ----
+## If Spreadsheet hasn't been created yet.
 
-### 1. Create your Spreadsheet
+### 1. Create your Spreadsheet 
 
 Create a new Google Spreadsheet
 
@@ -64,7 +68,21 @@ Spreadsheet Sheets | Sketch Page list
 ![Spreadsheet Sheets](images/sheets-example.png) | ![Sketch Page list](images/pages-naming-example.png)
 
 
-### 4. Run the plugin
+## Setup Plugin on sketch
+### 1. Download plugin 
+1. https://github.com/maths-no-problem/Google-sheets-content-sync-sketch-plugin/archive/master.zip
+2. unzip download.
+3. click on ***Google sheets content sync.sketchplugin*** to install plugin
+
+### 2. Link Google Sheet
+1.  `Plugins > Google Sheet content sync > Link Google Sheet`
+    ![Link screen](images/screenshot-4.png)
+2. Get the Google Sheet URL and copy URL into the text field in this modal.
+    ![Link screen](images/screenshot-5.png)
+3. Click **Import**
+
+
+### 3. Run the plugin
 
 <kbd>⌃ control</kbd> + <kbd>i</kbd> to **import** the values from a spreadsheet. A popup alert will appear, allowing you to enter the URL of your Google Sheet. **Important: Use the URL of your Google Sheet in the browser address bar, DO NOT use the URL generated after clicking 'Publish to the web'.**
 
